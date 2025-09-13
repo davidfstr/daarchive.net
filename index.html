@@ -75,6 +75,17 @@
             overflow: hidden;
             position: relative;
             border: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .site-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            position: relative;
+            z-index: 1;
         }
 
         .placeholder-image {
@@ -177,8 +188,8 @@
     <div class="polaroid-grid">
         <div class="polaroid">
             <a href="https://aaronsw.daarchive.net/">
-                <div class="polaroid-image">
-                    <div class="placeholder-image">Aaron Swartz</div>
+                <div class="polaroid-image" style="background-image: url('images/sites/aaronsw-bgcolor.png'); background-repeat: repeat;">
+                    <img class="site-image" src="images/sites/aaronsw.png" alt="Aaron Swartz">
                 </div>
                 <div class="polaroid-content">
                     <div class="site-name">Aaron Swartz</div>
@@ -195,8 +206,8 @@
 
         <div class="polaroid">
             <a href="https://animeworld.daarchive.net/">
-                <div class="polaroid-image">
-                    <div class="placeholder-image">Akemi's Anime World</div>
+                <div class="polaroid-image" style="background-image: url('images/sites/animeworld-bgcolor.png'); background-repeat: repeat;">
+                    <img class="site-image" src="images/sites/animeworld.png" alt="Akemi's Anime World">
                 </div>
                 <div class="polaroid-content">
                     <div class="site-name">Akemi's Anime World</div>
@@ -213,8 +224,8 @@
 
         <div class="polaroid">
             <a href="https://bongocat.daarchive.net/">
-                <div class="polaroid-image">
-                    <div class="placeholder-image">Bongo Cat</div>
+                <div class="polaroid-image" style="background-image: url('images/sites/bongocat-bgcolor.png'); background-repeat: repeat;">
+                    <img class="site-image" src="images/sites/bongocat.png" alt="Bongo Cat">
                 </div>
                 <div class="polaroid-content">
                     <div class="site-name">Bongo Cat</div>
@@ -231,8 +242,8 @@
 
         <div class="polaroid">
             <a href="https://folklore.daarchive.net/">
-                <div class="polaroid-image">
-                    <div class="placeholder-image">Folklore.org</div>
+                <div class="polaroid-image" style="background-image: url('images/sites/folklore-bgcolor.png'); background-repeat: repeat;">
+                    <img class="site-image" src="images/sites/folklore.gif" alt="Folklore.org" style="padding: 14px;">
                 </div>
                 <div class="polaroid-content">
                     <div class="site-name">Folklore.org</div>
@@ -249,8 +260,8 @@
 
         <div class="polaroid">
             <a href="https://getmdl.daarchive.net/">
-                <div class="polaroid-image">
-                    <div class="placeholder-image">Material Design Lite</div>
+                <div class="polaroid-image" style="background-image: url('images/sites/getmdl-bgcolor.png'); background-repeat: repeat;">
+                    <img class="site-image" src="images/sites/getmdl.svg" alt="Material Design Lite">
                 </div>
                 <div class="polaroid-content">
                     <div class="site-name">Material Design Lite</div>
@@ -267,8 +278,8 @@
 
         <div class="polaroid">
             <a href="https://gunnerkrigg.daarchive.net/">
-                <div class="polaroid-image">
-                    <div class="placeholder-image">Gunnerkrigg Court</div>
+                <div class="polaroid-image" style="background-image: url('images/sites/gunnerkrigg-bgcolor.png'); background-repeat: repeat;">
+                    <img class="site-image" src="images/sites/gunnerkrigg.jpg" alt="Gunnerkrigg Court">
                 </div>
                 <div class="polaroid-content">
                     <div class="site-name">Gunnerkrigg Court</div>
@@ -285,8 +296,8 @@
 
         <div class="polaroid">
             <a href="https://insidemac.daarchive.net/">
-                <div class="polaroid-image">
-                    <div class="placeholder-image">Inside Macintosh PDFs</div>
+                <div class="polaroid-image" style="background-image: url('images/sites/insidemac-bgcolor.png'); background-repeat: repeat;">
+                    <img class="site-image" src="images/sites/insidemac.jpg" alt="Inside Macintosh PDFs">
                 </div>
                 <div class="polaroid-content">
                     <div class="site-name">Inside Macintosh PDFs</div>
@@ -303,8 +314,8 @@
 
         <div class="polaroid">
             <a href="https://ranma.daarchive.net/">
-                <div class="polaroid-image">
-                    <div class="placeholder-image">The Penultimate Ranma Fanfic Index</div>
+                <div class="polaroid-image" style="background-image: url('images/sites/ranma-bgcolor.png'); background-repeat: repeat;">
+                    <img class="site-image" src="images/sites/ranma.gif" alt="The Penultimate Ranma Fanfic Index">
                 </div>
                 <div class="polaroid-content">
                     <div class="site-name">The Penultimate Ranma Fanfic Index</div>
@@ -321,8 +332,8 @@
 
         <div class="polaroid">
             <a href="https://projectlafiel.daarchive.net/">
-                <div class="polaroid-image">
-                    <div class="placeholder-image">Project Lafiel</div>
+                <div class="polaroid-image" style="background-image: url('images/sites/projectlafiel-bgcolor.png'); background-repeat: repeat;">
+                    <img class="site-image" src="images/sites/projectlafiel.jpg" alt="Project Lafiel">
                 </div>
                 <div class="polaroid-content">
                     <div class="site-name">Project Lafiel</div>
@@ -339,8 +350,8 @@
 
         <div class="polaroid">
             <a href="https://sicp.daarchive.net/">
-                <div class="polaroid-image">
-                    <div class="placeholder-image">Structure and Interpretation of Computer Programs (SICP)</div>
+                <div class="polaroid-image" style="background-image: url('images/sites/sicp-bgcolor.png'); background-repeat: repeat;">
+                    <img class="site-image" src="images/sites/sicp.gif" alt="Structure and Interpretation of Computer Programs (SICP)">
                 </div>
                 <div class="polaroid-content">
                     <div class="site-name">Structure and Interpretation of Computer Programs (SICP)</div>
@@ -357,8 +368,8 @@
 
         <div class="polaroid">
             <a href="https://tmffa.daarchive.net/">
-                <div class="polaroid-image">
-                    <div class="placeholder-image">Tenchi Muyo Fan Fiction Archive</div>
+                <div class="polaroid-image" style="background-image: url('images/sites/tmffa-bgcolor.png'); background-repeat: repeat;">
+                    <img class="site-image" src="images/sites/tmffa.jpg" alt="Tenchi Muyo Fan Fiction Archive">
                 </div>
                 <div class="polaroid-content">
                     <div class="site-name">Tenchi Muyo Fan Fiction Archive</div>
@@ -375,8 +386,8 @@
 
         <div class="polaroid">
             <a href="https://xkcd.daarchive.net/">
-                <div class="polaroid-image">
-                    <div class="placeholder-image">xkcd</div>
+                <div class="polaroid-image" style="background-image: url('images/sites/xkcd-bgcolor.png'); background-repeat: repeat;">
+                    <img class="site-image" src="images/sites/xkcd.png" alt="xkcd">
                 </div>
                 <div class="polaroid-content">
                     <div class="site-name">xkcd</div>
