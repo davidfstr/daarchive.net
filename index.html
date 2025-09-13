@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DaArchive - daarchive.net</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .polaroid-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .polaroid {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            padding: 20px 20px 15px 20px;
+            transform: rotate(-2deg);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+        }
+
+        .polaroid:nth-child(even) {
+            transform: rotate(2deg);
+        }
+
+        .polaroid:nth-child(even):hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .polaroid-image {
+            width: 100%;
+            height: 180px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #e0e0e0;
+        }
+
+        .placeholder-image {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%), 
+                        linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), 
+                        linear-gradient(45deg, transparent 75%, #f0f0f0 75%), 
+                        linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .polaroid-content {
+            position: relative;
+            height: 60px;
+        }
+
+        .site-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .site-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .site-type {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .site-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .status-online {
+            background-color: #4CAF50;
+        }
+
+        .status-offline {
+            background-color: #f44336;
+        }
+
+        .polaroid a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .polaroid-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .polaroid-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>DaArchive</h1>
+        <p>Preserved websites from across the internet</p>
+    </div>
+
+    <div class="polaroid-grid">
+        <div class="polaroid">
+            <a href="https://aaronsw.daarchive.net/">
+                <div class="polaroid-image">
+                    <div class="placeholder-image">Aaron Swartz</div>
+                </div>
+                <div class="polaroid-content">
+                    <div class="site-name">Aaron Swartz</div>
+                    <div class="site-info">
+                        <div class="site-type">Personal Site</div>
+                        <div class="site-status">
+                            <span>Est. 2013</span>
+                            <div class="status-indicator status-offline"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="polaroid">
+            <a href="https://animeworld.daarchive.net/">
+                <div class="polaroid-image">
+                    <div class="placeholder-image">Anime World</div>
+                </div>
+                <div class="polaroid-content">
+                    <div class="site-name">Anime World</div>
+                    <div class="site-info">
+                        <div class="site-type">Community</div>
+                        <div class="site-status">
+                            <span>Jul 2022</span>
+                            <div class="status-indicator status-offline"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="polaroid">
+            <a href="https://bongocat.daarchive.net/">
+                <div class="polaroid-image">
+                    <div class="placeholder-image">Bongo Cat</div>
+                </div>
+                <div class="polaroid-content">
+                    <div class="site-name">Bongo Cat</div>
+                    <div class="site-info">
+                        <div class="site-type">Meme Site</div>
+                        <div class="site-status">
+                            <span>Sep 2018</span>
+                            <div class="status-indicator status-online"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="polaroid">
+            <a href="https://folklore.daarchive.net/">
+                <div class="polaroid-image">
+                    <div class="placeholder-image">Folklore.org</div>
+                </div>
+                <div class="polaroid-content">
+                    <div class="site-name">Folklore.org</div>
+                    <div class="site-info">
+                        <div class="site-type">History</div>
+                        <div class="site-status">
+                            <span>May 2023</span>
+                            <div class="status-indicator status-online"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="polaroid">
+            <a href="https://getmdl.daarchive.net/">
+                <div class="polaroid-image">
+                    <div class="placeholder-image">Material Design Lite</div>
+                </div>
+                <div class="polaroid-content">
+                    <div class="site-name">Material Design Lite</div>
+                    <div class="site-info">
+                        <div class="site-type">Framework</div>
+                        <div class="site-status">
+                            <span>2018</span>
+                            <div class="status-indicator status-online"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="polaroid">
+            <a href="https://gunnerkrigg.daarchive.net/">
+                <div class="polaroid-image">
+                    <div class="placeholder-image">Gunnerkrigg Court</div>
+                </div>
+                <div class="polaroid-content">
+                    <div class="site-name">Gunnerkrigg Court</div>
+                    <div class="site-info">
+                        <div class="site-type">Comic</div>
+                        <div class="site-status">
+                            <span>Jul 2022</span>
+                            <div class="status-indicator status-online"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="polaroid">
+            <a href="https://insidemac.daarchive.net/">
+                <div class="polaroid-image">
+                    <div class="placeholder-image">Inside Macintosh</div>
+                </div>
+                <div class="polaroid-content">
+                    <div class="site-name">Inside Macintosh</div>
+                    <div class="site-info">
+                        <div class="site-type">Documentation</div>
+                        <div class="site-status">
+                            <span>1990s</span>
+                            <div class="status-indicator status-offline"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="polaroid">
+            <a href="https://projectlafiel.daarchive.net/">
+                <div class="polaroid-image">
+                    <div class="placeholder-image">Project Lafiel</div>
+                </div>
+                <div class="polaroid-content">
+                    <div class="site-name">Project Lafiel</div>
+                    <div class="site-info">
+                        <div class="site-type">Fan Site</div>
+                        <div class="site-status">
+                            <span>2015</span>
+                            <div class="status-indicator status-offline"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="polaroid">
+            <a href="https://ranma.daarchive.net/">
+                <div class="polaroid-image">
+                    <div class="placeholder-image">Ranma ½</div>
+                </div>
+                <div class="polaroid-content">
+                    <div class="site-name">Ranma ½</div>
+                    <div class="site-info">
+                        <div class="site-type">Fan Site</div>
+                        <div class="site-status">
+                            <span>2010</span>
+                            <div class="status-indicator status-offline"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="polaroid">
+            <a href="https://sicp.daarchive.net/">
+                <div class="polaroid-image">
+                    <div class="placeholder-image">SICP</div>
+                </div>
+                <div class="polaroid-content">
+                    <div class="site-name">SICP</div>
+                    <div class="site-info">
+                        <div class="site-type">Textbook</div>
+                        <div class="site-status">
+                            <span>1996</span>
+                            <div class="status-indicator status-online"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="polaroid">
+            <a href="https://tmffa.daarchive.net/">
+                <div class="polaroid-image">
+                    <div class="placeholder-image">TMFFA</div>
+                </div>
+                <div class="polaroid-content">
+                    <div class="site-name">TMFFA</div>
+                    <div class="site-info">
+                        <div class="site-type">Fan Fiction</div>
+                        <div class="site-status">
+                            <span>2008</span>
+                            <div class="status-indicator status-offline"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="polaroid">
+            <a href="https://xkcd.daarchive.net/">
+                <div class="polaroid-image">
+                    <div class="placeholder-image">xkcd</div>
+                </div>
+                <div class="polaroid-content">
+                    <div class="site-name">xkcd</div>
+                    <div class="site-info">
+                        <div class="site-type">Comic</div>
+                        <div class="site-status">
+                            <span>Oct 2024</span>
+                            <div class="status-indicator status-online"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
