@@ -159,6 +159,20 @@
             background-color: #f44336;
         }
 
+        .polaroid--locked {
+            display: none;
+        }
+
+        .polaroid--locked .polaroid-image::after {
+            content: '🔒';
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            font-size: 3rem;
+            line-height: 1;
+            z-index: 2;
+        }
+
         .polaroid a {
             text-decoration: none;
             color: inherit;
@@ -348,6 +362,24 @@
             </a>
         </div>
 
+        <div class="polaroid polaroid--locked">
+            <a data-href-encoded="nUE5pUZ1Yl4gLJAaLKWxMJ9hMTSupzAbnKMyYz0yqP3=">
+                <div class="polaroid-image" style="background-image: url('images/sites/macgarden-bgcolor.png'); background-repeat: repeat;">
+                    <img class="site-image" data-src-encoded="nJ6uM7ImY8AcqTImY76uL7qupzEyov0anJL=" data-alt-encoded="GJSwnJ05o8AbVRqupzEyot==">
+                </div>
+                <div class="polaroid-content">
+                    <div class="site-name" data-text-encoded="GJSwnJ05o8AbVRqupzEyot=="></div>
+                    <div class="site-info">
+                        <div class="site-type" data-text-encoded="D7kup8AcLlOALJAcoaEip7t="></div>
+                        <div class="site-status">
+                            <span title="Last updated">Sep 2025</span>
+                            <div class="status-indicator status-online" title="Online, as of May 2026"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
         <div class="polaroid">
             <a href="https://ranma.daarchive.net/">
                 <div class="polaroid-image" style="background-image: url('images/sites/ranma-bgcolor.png'); background-repeat: repeat;">
@@ -439,6 +471,68 @@
         </div>
     </div>
     
+    <script>
+    (function() {
+        function obfuscate(s)   {
+            return rot(btoa(s));  // Base64 + Rot
+        }
+        function deobfuscate(s) {
+            return atob(rot(s));  // Rot + Base64
+        }
+        function rot(s) {
+            var r = '';
+            for (var i = 0; i < s.length; i++) {
+                var c = s[i];
+                // Rot13 (a-z)
+                if      (c >= 'a' && c <= 'z') c = String.fromCharCode((c.charCodeAt(0) - 97 + 13) % 26 + 97);
+                // Rot13 (A-Z)
+                else if (c >= 'A' && c <= 'Z') c = String.fromCharCode((c.charCodeAt(0) - 65 + 13) % 26 + 65);
+                // Rot5 (0-9)
+                else if (c >= '0' && c <= '9') c = String.fromCharCode((c.charCodeAt(0) - 48 +  5) % 10 + 48);
+                r += c;
+            }
+            return r;
+        }
+
+        // Locked Polaroids: Decode and show if appropriate.
+        // NOTE: Use setTimeout to resist indexing by web crawlers like Google which actually
+        //       run JavaScript on page load during the indexing process.
+        window.setTimeout(() => {
+            // Locked Polaroids: Set cookie if ?david=1 is in the URL.
+            let claimsToBeDavidNow = false;
+            if (new URLSearchParams(window.location.search).get('david') === '1') {
+                // NOTE: Cookie set will fail silently if page loaded from file:// URL
+                document.cookie = 'claimsToBeDavid=1; path=/; max-age=31536000';  // 1 year
+                claimsToBeDavidNow = true;
+            }
+
+            // Locked Polaroids: Show if claimsToBeDavid cookie is set.
+            const claimsToBeDavid = document.cookie.split(';').some(function(c) { return c.trim() === 'claimsToBeDavid=1'; });
+            if (claimsToBeDavidNow || claimsToBeDavid) {
+                // Decode metadata
+                // NOTE: Metadata is encoded to resist indexing by automated processes like web crawlers.
+                document.querySelectorAll('[data-href-encoded]').forEach(function (el) {
+                    el.href = deobfuscate(el.getAttribute('data-href-encoded'));
+                });
+                document.querySelectorAll('[data-src-encoded]').forEach(function (el) {
+                    el.src = deobfuscate(el.getAttribute('data-src-encoded'));
+                });
+                document.querySelectorAll('[data-alt-encoded]').forEach(function (el) {
+                    el.alt = deobfuscate(el.getAttribute('data-alt-encoded'));
+                });
+                document.querySelectorAll('[data-text-encoded]').forEach(function (el) {
+                    el.textContent = deobfuscate(el.getAttribute('data-text-encoded'));
+                });
+                
+                // Show
+                document.querySelectorAll('.polaroid--locked').forEach(function(el) {
+                    el.style.display = 'unset';
+                });
+            }
+        }, 5);
+    })();
+    </script>
+
     <a href="https://dafoster.net/projects/crystal-web-archiver/" id="cr-footer-banner" style="border-top: 2px #B40010 solid;background: #FFFAE1;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;font-variant: initial;font-weight: initial;text-transform: none;font-size: 14px;color: #6c757d;line-height: 2.0;cursor: pointer;display: flex;align-items: center;justify-content: center;gap: 4px;clear: both;" target="_blank"><img height="24" onerror="this.style['display'] = 'none';" src="_/crystal/resources/appicon.png" width="24"/><span>This page was archived with Crystal</span><script>window.addEventListener('load', function() { const $1 = document.querySelector('#cr-footer-banner'); if (!$1) { return; } if (window !== window.top) { let $2 = false; if (window.name) { const $3 = window.parent.document.getElementsByName(window.name); if ($3.length === 1) { const $4 = $3[0]; if ($4.tagName === 'FRAME' && $4.parentElement.tagName === 'FRAMESET') { let $5 = $4; while (true) { if ($5.parentElement.tagName !== 'FRAMESET') { $2 = true; break; } if ($5.parentElement.attributes['rows'] !== undefined) { const $6 = $5.parentElement.children; if ($5 === $6[$6.length - 1]) { $5 = $5.parentElement; continue; } else { break; } } else if ($5.parentElement.attributes['cols'] !== undefined) { const $7 = Array.from($5.parentElement.children); const $8 = $7.indexOf($5); if ($8 === -1) { break; } const $9 = $5.parentElement.attributes['cols'].value.split(','); const $10 = $9.map((s) => parseInt(s.trim())); if ($9[$8].trim() === '*' || $10[$8] === Math.max.apply(null, $10)) { $5 = $5.parentElement; continue; } else { break; } } else { break; } } } } } if (!$2) { $1.style['display'] = 'none'; } } const $11 = $1.getBoundingClientRect(); const $12 = ($11.y < window.innerHeight - $11.height); if ($12) { $1.style['position'] = 'fixed'; $1.style['bottom'] = '0'; $1.style['left'] = '0'; $1.style['right'] = '0'; $1.style['z-index'] = '9999'; } const $13 = ( document.body.getBoundingClientRect().height < $11.height * 2 ); if ($13) { $1.style['display'] = 'none'; }});</script></a>
 </body>
 </html>
